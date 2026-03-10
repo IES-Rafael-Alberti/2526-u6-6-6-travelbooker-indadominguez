@@ -4,6 +4,8 @@
 
 **Agrupamiento de la actividad**: Individual 
 
+**Nombre del alumno:** Indalecio Domínguez Hita
+
 ---
 
 ### Descripción: **Ejercicio: Gestor de Reservas para una Agencia de Viajes**
