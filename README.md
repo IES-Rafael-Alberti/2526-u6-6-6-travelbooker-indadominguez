@@ -252,3 +252,43 @@ Esto permite asegurar que los datos introducidos cumplen un formato específico 
 El uso de regex es una solución eficiente para validar cadenas de texto con patrones definidos.]
 
 https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/ReservaVuelo.kt#L61-L68
+
+---
+
+# Entrega de la Práctica
+
+## Introducción
+
+Este proyecto consiste en una aplicación de consola para gestionar reservas de hotel y vuelo.
+
+El problema que se aborda es la organización y control de reservas de forma estructurada, evitando errores en los datos y facilitando su consulta.
+
+La solución se ha implementado utilizando programación orientada a objetos y una arquitectura en capas, separando la lógica de negocio, los datos y la interfaz de usuario.
+
+---
+
+## Estructura
+
+El proyecto se divide en cuatro paquetes:
+
+- `dominio`: clases principales (`Reserva`, `ReservaHotel`, `ReservaVuelo`)
+- `datos`: acceso a datos (`IReservaRepository`, `ReservaRepository`)
+- `servicio`: lógica de negocio (`IReservaService`, `ReservaService`)
+- `presentacion`: interacción con el usuario (`ConsolaUI`)
+
+---
+
+## Ejecución
+
+1. Abrir el proyecto en IntelliJ
+2. Ejecutar la clase principal
+3. Usar el menú de consola
+
+---
+
+## Uso
+
+- Crear reservas de hotel o vuelo
+- Listar reservas guardadas
+
+El sistema valida los datos introducidos para evitar errores.
