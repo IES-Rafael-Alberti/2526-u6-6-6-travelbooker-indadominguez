@@ -134,6 +134,8 @@ La aplicación debe seguir una **arquitectura en capas**, separando claramente:
 
     - **MUY IMPORTANTE!!** Incluir un subapartado ("Respuestas a las preguntas planteadas") dónde se resuelvan las preguntas de evaluación que os realizamos a continuación. De forma clara y detallada, incluyendo enlaces al código que justifica vuestra respuesta si es necesario.
 
+---
+
 # Preguntas para la Evaluación
 
 Este conjunto de preguntas está diseñado para ayudarte a reflexionar sobre cómo has aplicado los criterios de evaluación en tu proyecto. Al responderlas, [**asegúrate de hacer referencia y enlazar al código relevante**](https://docs.github.com/es/get-started/writing-on-github/working-with-advanced-formatting/creating-a-permanent-link-to-a-code-snippet) en tu `README.md`, facilitando así la evaluación de tu trabajo.
@@ -169,3 +171,84 @@ Este conjunto de preguntas está diseñado para ayudarte a reflexionar sobre có
 #### **Criterio global 10: Expresiones Regulares**
 - **(6.g)**: Muestra ejemplos de tu código donde hayas utilizado las expresiones regulares. ¿Qué beneficio has obtenido?
 
+---
+
+# Respuestas a las preguntas planteadas
+
+### **Criterio global 1: Instancia objetos y hacer uso de ellos**
+[Los objetos se crean en la capa de servicio, que actúa como intermediaria entre la interfaz de usuario y el dominio. Esto permite desacoplar la lógica de creación del flujo de interacción con el usuario.
+Además, los parámetros se pasan a los métodos para inicializar correctamente el estado interno de los objetos, asegurando que cada reserva tenga los datos necesarios desde su creación.]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/servicio/ReservaService.kt#L30-L48
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/ReservaHotel.kt#L58-L64
+### **Criterio global 2: Crear y llamar métodos estáticos**
+[En el proyecto se utilizan métodos estáticos a través de companion object de Kotlin. Estos métodos no pertenecen a una instancia concreta, sino a la clase en sí, lo cual es útil cuando la funcionalidad es común y no depende del estado de un objeto ya creado.]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/ReservaHotel.kt#L39-L65
+### **Criterio global 3: Uso de entornos**
+[El proceso seguido ha sido:
+Creación del proyecto con estructura por paquetes, 
+Implementación de clases organizadas por capas, 
+Compilación automática mediante el IDE, 
+Ejecución del programa desde la clase principal, 
+Uso de herramientas de depuración para detectar errores]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/servicio/ReservaService.kt#L17-L56
+### **Criterio global 4: Definir clases y su contenido**
+[Las clases han sido diseñadas para representar entidades del mundo real dentro del sistema, siguiendo principios de encapsulación y abstracción.
+Por ejemplo, la clase abstracta Reserva define los atributos comunes (id, descripción, fecha), mientras que las clases hijas (ReservaHotel y ReservaVuelo) añaden comportamiento específico.]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/Reserva.kt#L15-L36
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/ReservaVuelo.kt#L16-L70
+### **Criterio global 5: Herencia y uso de clases abstractas e interfaces**
+[La herencia se aplica mediante una clase abstracta (Reserva) que actúa como base para las clases concretas. Esto permite compartir comportamiento común y definir una estructura base.
+Las interfaces (IReservaRepository, IReservaService, IUserInterface) permiten desacoplar las distintas capas del sistema, facilitando la sustitución de implementaciones sin afectar al resto del código.
+En cuanto a los principios SOLID:
+S (Single Responsibility): cada clase tiene una única responsabilidad
+O (Open/Closed): el sistema se puede extender sin modificar código existente
+D (Dependency Inversion): se depende de interfaces en lugar de clases concretas]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/servicio/IReservaService.kt#L13-L40
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/datos/ReservaRepository.kt#L11-L39
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/Reserva.kt#L15-L36
+
+### **Criterio global 6: Diseño de jerarquía de clases**
+[Se ha diseñado una jerarquía clara basada en una clase abstracta que define el comportamiento común y clases derivadas que lo especializan.
+Esta jerarquía permite tratar todas las reservas de forma polimórfica, facilitando operaciones como el almacenamiento o listado sin necesidad de conocer el tipo concreto.
+El tipo de herencia utilizado es principalmente de especialización, ya que cada subclase representa un tipo más específico de la clase base.
+La validación del correcto funcionamiento se ha realizado mediante pruebas en la interfaz de usuario, creando distintos tipos de reservas y verificando su comportamiento.]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/ReservaHotel.kt#L17-L66
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/Reserva.kt#L15-L36
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/presentacion/ConsulaUI.kt#L19-L143
+
+### **Criterio global 7: Librerías de clases**
+[El proyecto utiliza librerías estándar del lenguaje Kotlin y Java, como java.time para el manejo de fechas y horas, y Regex para validaciones.
+Estas librerías han sido elegidas por su fiabilidad, integración con el lenguaje y facilidad de uso.
+Permiten ampliar la funcionalidad del programa sin necesidad de implementar soluciones desde cero, como el manejo de fechas o validación de formatos.]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/Reserva.kt#L3-L18
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/ReservaVuelo.kt#L61-L63
+
+### **Criterio global 8: Documentado**
+[El código ha sido documentado utilizando comentarios KDoc, que permiten describir clases, métodos y propiedades de forma estructurada.
+Esto facilita:
+La comprensión del código
+El mantenimiento
+La generación automática de documentación
+Además, se describen parámetros, valores de retorno y posibles excepciones, lo que mejora la calidad del código.]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/datos/IReservaRepository.kt#L13-L30
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/presentacion/IUserInterface.kt#L11-L20
+
+### **Criterio global 9: Genéricos**
+[En el proyecto no he utilizado ningún tipo de genérico pero el archivo que podría implementarlo sería IReservaRepository.kt]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/datos/IReservaRepository.kt#L13-L30
+
+### **Criterio global 10: Expresiones Regulares**
+[Se han utilizado expresiones regulares para validar el formato de la hora en las reservas de vuelo.
+Esto permite asegurar que los datos introducidos cumplen un formato específico antes de ser procesados, evitando errores en tiempo de ejecución.
+El uso de regex es una solución eficiente para validar cadenas de texto con patrones definidos.]
+
+https://github.com/IES-Rafael-Alberti/2526-u6-6-6-travelbooker-indadominguez/blob/dc3d57e35c7930820524d71e43a0f3b1f550dbf5/src/main/kotlin/dominio/ReservaVuelo.kt#L61-L68
