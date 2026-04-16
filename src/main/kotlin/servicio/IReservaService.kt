@@ -37,4 +37,8 @@ interface IReservaService {
      * @return lista de objetos [Reserva] almacenados.
      */
     fun listarReservas(): List<Reserva>
+
+    fun obtenerReserva(id: Int): Reserva?
+
+    fun eliminarReserva(id: Int): Boolean
 }

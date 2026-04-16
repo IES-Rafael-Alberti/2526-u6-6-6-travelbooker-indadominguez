@@ -21,13 +21,10 @@ class ReservaRepository : IReservaRepository {
      * @param reserva reserva que se desea agregar.
      * @return `true` si la reserva fue añadida, `false` si ya existía.
      */
-    override fun agregar(reserva: Reserva): Boolean {
-        var agregado = false
-        if (!reservas.contains(reserva)) {
-            reservas.add(reserva)
-            agregado = true
-        }
-        return agregado
+    override fun crear(entidad: Reserva): Boolean {
+        if (reservas.any { it.id == entidad.id }) return false
+        reservas.add(entidad)
+        return true
     }
 
     /**
@@ -35,5 +32,21 @@ class ReservaRepository : IReservaRepository {
      *
      * @return lista inmutable con las reservas existentes.
      */
+    override fun leer(id: Int): Reserva? {
+        return reservas.find { it.id == id }
+    }
+
+    override fun actualizar(entidad: Reserva): Boolean {
+        val indice = reservas.indexOfFirst { it.id == entidad.id }
+        return if (indice != -1) {
+            reservas[indice] = entidad
+            true
+        } else false
+    }
+
+    override fun borrar(id: Int): Boolean {
+        return reservas.removeIf { it.id == id }
+    }
+
     override fun obtenerTodas(): List<Reserva> = reservas.toList()
 }

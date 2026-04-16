@@ -12,11 +12,12 @@ import java.time.LocalDateTime
  * @property descripcion descripción general de la reserva.
  * @property fechaCreacion fecha y hora en la que se creó la reserva.
  */
+
 abstract class Reserva(
-    val id: Int,
+    override val id: Int,
     val descripcion: String,
     val fechaCreacion: LocalDateTime
-) {
+) : Identificable<Int> {
 
     /**
      * Información básica de la reserva.

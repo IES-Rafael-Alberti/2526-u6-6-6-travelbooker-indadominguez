@@ -1,6 +1,7 @@
 package org.practicatrim2.datos
 
 import org.practicatrim2.dominio.Reserva
+import org.practicatrim2.dao.Dao
 
 /**
  * Interfaz que define las operaciones básicas de persistencia
@@ -10,7 +11,8 @@ import org.practicatrim2.dominio.Reserva
  * de las reservas, facilitando la implementación de diferentes
  * repositorios (memoria, base de datos, etc.).
  */
-interface IReservaRepository {
+interface IReservaRepository : Dao<Reserva, Int> {
+    fun obtenerTodas(): List<Reserva>
 
     /**
      * Agrega una nueva reserva al repositorio.
@@ -19,12 +21,4 @@ interface IReservaRepository {
      * @return `true` si la reserva se ha añadido correctamente,
      * `false` si la reserva ya existía en el repositorio.
      */
-    fun agregar(reserva: Reserva): Boolean
-
-    /**
-     * Obtiene todas las reservas almacenadas en el repositorio.
-     *
-     * @return lista con todas las reservas registradas.
-     */
-    fun obtenerTodas(): List<Reserva>
 }
