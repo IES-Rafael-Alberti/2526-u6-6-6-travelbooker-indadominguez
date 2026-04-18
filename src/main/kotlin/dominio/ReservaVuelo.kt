@@ -66,5 +66,17 @@ class ReservaVuelo private constructor(
             contador++
             return reserva
         }
+
+        fun desdeArchivo(
+            id: Int,
+            descripcion: String,
+            origen: String,
+            destino: String,
+            horaVuelo: String,
+            fecha: LocalDateTime
+        ): ReservaVuelo {
+            val reserva = ReservaVuelo(id, descripcion, origen, destino, horaVuelo)
+            return reserva
+        }
     }
 }

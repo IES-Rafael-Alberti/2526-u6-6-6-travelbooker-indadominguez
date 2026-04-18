@@ -62,5 +62,16 @@ class ReservaHotel private constructor(
             contador++
             return reserva
         }
+
+        fun desdeArchivo(
+            id: Int,
+            descripcion: String,
+            ubicacion: String,
+            numeroNoches: Int,
+            fecha: LocalDateTime
+        ): ReservaHotel {
+            val reserva = ReservaHotel(id, descripcion, ubicacion, numeroNoches)
+            return reserva
+        }
     }
 }
